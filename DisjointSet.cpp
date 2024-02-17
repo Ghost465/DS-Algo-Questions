@@ -39,7 +39,7 @@ public:
     }
     
     int countNumberOfSets(){
-        int provinceCount=0;
+        int count=0;
         for(int i=0 ; i<N ; i++){
             if (DS[i]!=-1){
                 int j=i;
@@ -48,10 +48,10 @@ public:
                     j = DS[j];
                     DS[t] = -1;
                 }
-                provinceCount++;
+                count++;
             }
         }
-        return provinceCount;
+        return count;
     }
 };
 
