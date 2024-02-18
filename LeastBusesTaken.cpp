@@ -13,7 +13,7 @@
 
 
 /*
-I probably ideated bus routes as graph edges and performed traversal on it. Increase count every time my bus route changes
+I probably ideated this solution as bus stops as graph nodes and performed traversal on it. Increase count every time my bus route changes
 
 But there's another (possibly better) approach to this. Why not imagine a 'bus route' as a graph node, and perform traversal on that graph?
 Node structure can be like this...
@@ -22,6 +22,7 @@ struct BusRouteNode {
  set<BusRouteNode*> connectedBusRoutes;
 }
 Challenge is constructing a graph for this (multiple stops within one route could connect to multiple stops in other route).
+Now i have to increase count for every node change. Can avoid keeping track of curr bus route and having complex logic in detecting when i changed my route.
 */
 
 
