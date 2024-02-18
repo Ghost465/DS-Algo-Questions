@@ -12,6 +12,18 @@
 // Input: routes = [[7,12],[4,5,15],[6],[15,19],[9,12,13]], source = 15, target = 12Output: -1
 
 
+/*
+I probably ideated bus routes as graph edges and performed traversal on it. Increase count every time my bus route changes
+
+But there's another (possibly better) approach to this. Why not imagine a 'bus route' as a graph node, and perform traversal on that graph?
+Node structure can be like this...
+struct BusRouteNode {
+ set<int> busStopsWithinTheRoute;
+ set<BusRouteNode*> connectedBusRoutes;
+}
+Challenge is constructing a graph for this (multiple stops within one route could connect to multiple stops in other route).
+*/
+
 
 #include<bits/stdc++.h>
 using namespace std;
