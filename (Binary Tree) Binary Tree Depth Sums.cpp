@@ -1,4 +1,5 @@
 /*
+
 Q1 : Sum of depths of nodes in a binary tree
 
 Q2 : For all trees present in a binary tree (sub-trees too), calculate sum total of depths of nodes
