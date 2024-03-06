@@ -1,4 +1,9 @@
 /*
+Leetcode : https://leetcode.com/problems/first-missing-positive/submissions/1195942824/?envType=featured-list&envId=top-google-questions?envType=featured-list&envId=top-google-questions
+*/
+
+// Asked in an interview as well...
+/*
 Given an unsorted array arr[] with both positive and negative elements, the task is to find the smallest positive number missing from the array. (Consider duplicates as well)
 Input:  arr[] = { 2, 3, -7, 6, 8, 1, -10, 15 }
 Output: 4
@@ -53,3 +58,36 @@ void solution2() {
     cout<<N+1<<endl;
     return;
 }
+
+
+
+
+// better, understandable solution
+class Solution {
+public:
+    int firstMissingPositive(vector<int>& nums) {
+        int N=nums.size();
+        // reduce (1,N) problem to (0,N-1) problem
+        for(int i=0 ; i<N ; i++) {
+            // handle extreme values
+            if (nums[i]>=0 && nums[i]<=N)
+                nums[i]--;
+        }
+        int i=0;
+        while(i<N) {
+            // swap as long as these conditions are met (usually cannot stack these conditions together in code intuitively, but can band them later)
+            if ((nums[i]!=i) && (nums[i]>=0 && nums[i]<N) && (nums[nums[i]]!=nums[i])) {
+                swap(nums[i],nums[nums[i]]);
+            } else {
+                // increment if does not fall in range, or is same value as index, or is duplicate
+                i++;
+            }
+        }
+        for(int i=0 ; i<N ; i++) {
+            if (i!=nums[i]) {
+                return i+1;
+            }
+        }
+        return N+1;
+    }
+};
