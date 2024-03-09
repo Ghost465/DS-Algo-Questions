@@ -104,3 +104,37 @@ public:
         return checkBipartiteGraph(graph);
     }
 };
+
+// THIS IS A BETTER SOLUTION
+// I'm a fool... I need not check for graph bipartitism as I'm constructing the graph. I can first construct the graph, and then start assigning colors by graph traversal.
+// The solution is meant to consider graph as a disconnected graph.
+// If the problem assumed the graph to be a connected graph, I can go ahead and remove the outer for loop.
+
+
+class Solution {
+public:
+    bool isBipartite(vector<vector<int>>& graph) {
+        int N=graph.size();
+        vector<int> colorCode(N,-1); // 0->color1 ; 1->color2 ; -1->unvisited
+        for(int n=0 ; n<N ; n++) {
+            if (colorCode[n]==-1) {
+                queue<int> Q;
+                Q.push(n);
+                colorCode[n]=0;
+                while(!Q.empty()) {
+                    int node = Q.front();
+                    Q.pop();
+                    for(int i=0 ; i<graph[node].size() ; i++) {
+                        if (colorCode[graph[node][i]]==-1) {
+                            Q.push(graph[node][i]);
+                            colorCode[graph[node][i]]=1-colorCode[node];
+                        } else if(colorCode[node] + colorCode[graph[node][i]]!=1) {
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+        return true;
+    }
+};
