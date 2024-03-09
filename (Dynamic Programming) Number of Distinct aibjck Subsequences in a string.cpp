@@ -12,7 +12,6 @@ using namespace std;
 int main() {
     string S="abbbacaabcc";
     int N=S.length();
-    vector<int> DP(N, 0);
     int countA=0;
     int countB=0;
     int countC=0;
